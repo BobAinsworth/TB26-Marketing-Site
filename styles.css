@@ -17,6 +17,11 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   color: var(--ink);
@@ -187,6 +192,10 @@ a { color: inherit; }
   gap: 20px;
   min-height: 255px;
 }
+.category-card > div,
+.resource-card > div {
+  min-width: 0;
+}
 .bubble {
   width: 74px;
   height: 74px;
@@ -211,6 +220,7 @@ a { color: inherit; }
   color: var(--accent, var(--green));
   font-size: 27px;
   line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 .category-card p,
 .resource-card p {
@@ -248,6 +258,7 @@ a { color: inherit; }
 .plain-list a {
   text-decoration: none;
   border-bottom: 1px solid rgba(0,0,0,.18);
+  overflow-wrap: anywhere;
 }
 .resource-card li a:hover,
 .plain-list a:hover {
@@ -342,10 +353,11 @@ a { color: inherit; }
 }
 
 @media (max-width: 680px) {
-  .actc-logo { width: 96px; height: 82px; }
-  .brand { align-items: flex-start; gap: 14px; }
+  .topbar { padding: 16px; }
+  .actc-logo { width: 84px; height: 72px; }
+  .brand { align-items: flex-start; gap: 10px; }
   .eyebrow { font-size: 20px; }
-  .site-title { font-size: 33px; }
+  .site-title { font-size: 30px; }
   .tagline { font-size: 16px; }
   .nav-actions a,
   .nav-actions button { font-size: 15px; }
@@ -358,8 +370,19 @@ a { color: inherit; }
   .category-grid,
   .resource-grid,
   .compact-grid { grid-template-columns: 1fr; }
-  .category-card { grid-template-columns: 70px 1fr; }
+  .content { padding: 18px 16px 56px; }
+  .category-card { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding: 16px; }
+  .category-card h2 { font-size: 24px; }
+  .category-card p { font-size: 16px; }
+  .category-card .btn { width: auto; max-width: 100%; padding: 9px 14px; font-size: 13px; white-space: normal; }
+  .resource-card { padding: 16px; min-height: 0; }
+  .resource-head { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; }
+  .resource-card h2 { font-size: 24px; }
+  .resource-card p { font-size: 16px; }
+  .resource-card ul,
+  .plain-list { padding-left: 18px; font-size: 15px; }
   .bubble { width: 58px; height: 58px; font-size: 30px; }
   .footer { position: static; flex-direction: column; align-items: flex-start; padding: 14px 24px; }
   .search-panel { padding: 0 24px 20px; }
 }
+
